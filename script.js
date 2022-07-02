@@ -12,6 +12,7 @@ class Sprite{
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
+        this.lastKey 
     }
     //players look
     draw(){
@@ -19,6 +20,7 @@ class Sprite{
         context.fillRect(this.position.x,this.position.y,50,this.height)
     }
     update(){
+        
         this.draw()
 
         this.position.x+=this.velocity.x;
@@ -29,9 +31,13 @@ class Sprite{
         if(this.position.y+this.height>=canvas.height){
             this.velocity.y = 0;
         }
+        else if(this.position.y < 0){
+            this.velocity.y = 0;
+        }
         else{
             this.velocity.y+=gravity  
         }
+        console.log(this.position.y)
     }
 }
 
@@ -67,9 +73,21 @@ const keys = {
     },
     d:{
         pressed:false
+    },
+    w:{
+        pressed: false
+    },
+    s:{
+        pressed: false
+    },
+    ArrowLeft:{
+        pressed: false
+    },
+    ArrowRight:{
+        pressed: false 
     }
 }
-let lasyKey
+
 
 //infinite animation loop
 function animate(){
@@ -81,11 +99,22 @@ function animate(){
     enemy.update()
 
     player.velocity.x=0;
-    if(keys.a.pressed && lasyKey==='a'){
+    enemy.velocity.x=0;
+
+    //Player Movement
+    if(keys.a.pressed && player.lastKey==='a'){
         player.velocity.x=-1
     }
-    else if(keys.d.pressed && lasyKey==='d'){
+    else if(keys.d.pressed && player.lastKey==='d'){
         player.velocity.x=1
+    }
+
+    //Enemy Movement
+    if(keys.ArrowLeft.pressed && enemy.lastKey==='ArrowLeft'){
+        enemy.velocity.x=-1
+    }
+    else if(keys.ArrowRight.pressed && enemy.lastKey==='ArrowRight'){
+        enemy.velocity.x=1
     }
 }
 
@@ -94,27 +123,65 @@ animate();
 
 //capturing key press events
 
-window.addEventListener('keydown', e=>{
+window.addEventListener('keydown', e=>{ 
+   // console.log(e.key)
     switch(e.key){
+        
+    //player Movement
+
         case 'd':
             keys.d.pressed=true;
-            lasyKey='d'
+            player.lastKey='d'
             break
         case 'a':
             keys.a.pressed=true;
-            lasyKey='a'
+            player.lastKey='a'
             break
+        case 'w':
+           player.velocity.y=-10
+            break
+        case 's':
+            player.velocity.y=10   
+            break
+
+    //Enemy Movement
+
+        case 'ArrowRight':
+            keys.ArrowRight.pressed=true;
+            enemy.lastKey = 'ArrowRight'
+            break
+        case 'ArrowLeft':
+            keys.ArrowLeft.pressed=true;
+            enemy.lastKey = 'ArrowLeft'
+            break
+        case 'ArrowUp':
+            enemy.velocity.y=-10
+            break
+        case 'ArrowDown':
+            enemy.velocity.y=10
+            break 
     }
+    
 })
 
 //capturing key not pressing 
 window.addEventListener('keyup', e=>{
     switch(e.key){
+        //Player Keys
         case 'd':
             keys.d.pressed=false;
             break
         case 'a':
             keys.a.pressed=false;
             break
+
+        //Enemy Keys
+        case 'ArrowLeft':
+            keys.ArrowLeft.pressed=false;
+            break
+        case 'ArrowRight':
+            keys.ArrowRight.pressed=false;
+            break
+     
     }
 })
