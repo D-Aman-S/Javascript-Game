@@ -25,6 +25,7 @@ class Sprite{
         }
         this.color = color
         this.isAttacking
+        this.health=100
     }
     //players look
     draw(){
@@ -135,6 +136,7 @@ const keys = {
         pressed: false 
     }
 }
+let lastKey
 
 function rectangularCollision({rectangle1, rectangle2 }) {
     return(
@@ -184,6 +186,8 @@ function animate(){
         {
             player.isAttacking = false
             console.log('Player Attacked')
+           enemy.health-=20
+            document.querySelector('#enemyHealth').style.width=enemy.health+'%'
         }
 
 
@@ -195,6 +199,8 @@ function animate(){
         {
             enemy.isAttacking = false
             console.log('Enemy Attacked')
+             player.health-=20
+             document.querySelector('#playerHealth').style.width=player.health+'%'
         }    
 }
 
