@@ -161,7 +161,7 @@ if(timer==0)
 {
 if(player.health===enemy.health)
 {
-  console.log(tie) 
+ // console.log(tie) 
   document.querySelector('#displayText').innerHTML='Tie'
    document.querySelector('#displayText').style.display='flex'  
 }
