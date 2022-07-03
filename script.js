@@ -69,7 +69,7 @@ const keys = {
         pressed:false
     }
 }
-let lasyKey
+let lastKey
 
 //infinite animation loop
 function animate(){
@@ -81,10 +81,10 @@ function animate(){
     enemy.update()
 
     player.velocity.x=0;
-    if(keys.a.pressed && lasyKey==='a'){
+    if(keys.a.pressed && lastKey==='a'){
         player.velocity.x=-1
     }
-    else if(keys.d.pressed && lasyKey==='d'){
+    else if(keys.d.pressed && lastKey==='d'){
         player.velocity.x=1
     }
 }
@@ -98,11 +98,11 @@ window.addEventListener('keydown', e=>{
     switch(e.key){
         case 'd':
             keys.d.pressed=true;
-            lasyKey='d'
+            lastKey='d'
             break
         case 'a':
             keys.a.pressed=true;
-            lasyKey='a'
+            lastKey='a'
             break
     }
 })
