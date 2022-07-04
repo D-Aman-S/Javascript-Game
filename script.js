@@ -147,7 +147,7 @@ function rectangularCollision({rectangle1, rectangle2 }) {
         rectangle1.isAttacking
     )
 }
-let timer=10;
+let timer=15 ;
 function decreaseTimer()
 {
    
@@ -158,13 +158,21 @@ timer--
 document.querySelector('#timer').innerHTML=timer
 }
 if(timer==0)
-{
-if(player.health===enemy.health)
-{
- // console.log(tie) 
-  document.querySelector('#displayText').innerHTML='Tie'
-   document.querySelector('#displayText').style.display='flex'  
-}
+{ 
+    document.querySelector('#displayText').style.display='flex' 
+    if(player.health===enemy.health)
+    {
+        // console.log(tie) 
+        document.querySelector('#displayText').innerHTML='Tie'
+    }
+    else if(player.health > enemy.health)
+    {
+        document.querySelector('#displayText').innerHTML='Player Wins'
+    }
+    else if(player.health < enemy.health)
+    {
+        document.querySelector('#displayText').innerHTML='Enemy Wins'
+    }
 }
 }
 decreaseTimer();
