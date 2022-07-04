@@ -6,177 +6,26 @@ canvas.height=576;
 context.fillRect(0,0,canvas.width,canvas.height);
 
 const gravity = 0.75
-//creating a sprite classs
-class Sprite{
-    constructor({position, velocity, color = '#A10035', offset}){
-        this.position = position;
-        this.velocity = velocity;
-        this.height = 150;
-        this.width = 50;
-        this.lastKey 
-        this.attackbox = {
-            position: {
-                x: this.position.x,
-                y: this.position.y
-            },
-            offset,
-            width: 150, //changed the width from 100 to 150
-            height: 50
-        }
-        this.color = color
-        this.isAttacking
-        this.health=100
-    }
-    //players look
-    draw(){
-        context.fillStyle=this.color;
-        context.fillRect(this.position.x,this.position.y,this.width,this.height)
 
-        //attack box
-        if(this.isAttacking)
-        {
-        context.fillStyle='#FF869E';
-        context.fillRect
-            (
-                this.attackbox.position.x,
-                this.attackbox.position.y,
-                this.attackbox.width,
-                this.attackbox.height
-            )
-        }
-    }
-    update(){
-        
-        this.draw()
-        this.attackbox.position.x = this.position.x + this.attackbox.offset.x
-        this.attackbox.position.y = this.position.y
-
-        this.position.x+=this.velocity.x;
-        this.position.y += this.velocity.y; // adding y velocity
-
-        //stopping player when touchinng ground
-
-        if(this.position.y+this.height>=canvas.height){
-            this.velocity.y = 0;
-        }
-        else if(this.position.y < 0){
-            this.velocity.y = 0;
-        }
-        else{
-            this.velocity.y+=gravity  
-        }
-        console.log(this.position.y)
-    }
-    //attackbox
-
-    attack(){
-        this.isAttacking = true
-        setTimeout(() => {
-            this.isAttacking = false
-        }, 100)
-    }
-}
-
-//player object 
-const player = new Sprite({
-    position:
-    {
-        x:0,
-        y:0
-    },
-    velocity:
-    {
-        x:0,
-        y:0
-    },
-    offset:
-    {
-        x: 0,
-        y: 0
-    }
-})
-console.log(player);
-//to keep track of key presses
-
-
-//enemy object
-const enemy = new Sprite({
-    position:{
-        x:400,
-        y:50
-    },
-velocity:{
-        x:0,
-        y:0
-    },
-    color: '#FFE7BF',
-    offset:
-    {
-        x: -50,
-        y: 0
-    }
-})
-const keys = {
-    a:{
-        pressed:false
-    },
-    d:{
-        pressed:false
-    },
-    w:{
-        pressed: false
-    },
-    s:{
-        pressed: false
-    },
-    ArrowLeft:{
-        pressed: false
-    },
-    ArrowRight:{
-        pressed: false 
-    }
-}
 let lastKey
 
-function rectangularCollision({rectangle1, rectangle2 }) {
-    return(
-        rectangle1.attackbox.position.x + rectangle1.attackbox.width >= rectangle2.position.x &&
-        rectangle1.attackbox.position.x <= rectangle2.position.x + rectangle2.width &&
-        rectangle1.attackbox.position.y + rectangle1.attackbox.height >= rectangle2.position.y &&
-        rectangle1.attackbox.position.y <= rectangle2.position.y + rectangle2.height &&
-        rectangle1.isAttacking
-    )
-}
-let timer=10;
-function decreaseTimer()
-{
-   
-if(timer>0)
-{
-     setTimeout(decreaseTimer,1000)
-timer--
-document.querySelector('#timer').innerHTML=timer
-}
-if(timer==0)
-{
-if(player.health===enemy.health)
-{
- // console.log(tie) 
-  document.querySelector('#displayText').innerHTML='Tie'
-   document.querySelector('#displayText').style.display='flex'  
-}
-}
-}
+
 decreaseTimer();
 
 
-
+let i=0;
+let j=0;
+let k=0;
 //infinite animation loop
 function animate(){
     window.requestAnimationFrame(animate)
     //clearing the older position of players
     context.fillStyle='black';
     context.fillRect(0, 0, canvas.width, canvas.height);
+    background.update()
+    //animating shop-not in the video
+    animatePlant()
+    /////
     player.update()
     enemy.update()
 
@@ -223,7 +72,12 @@ function animate(){
             console.log('Enemy Attacked')
              player.health-=20
              document.querySelector('#playerHealth').style.width=player.health+'%'
-        }    
+        }
+        
+        //ending the game based on the heALTH   
+        if(enemy.health <=0 || player.health <=0){
+                determineWinner({player, enemy, timerId})
+        }
 }
 
 //calling infinite updation
@@ -299,3 +153,30 @@ window.addEventListener('keyup', e=>{
      
     }
 })
+
+function animatePlant(){
+    let  newImageSrc=`Plant/${Math.floor((i++)/5)%41}.png`
+    let  newImageSrc1=`Plant2/${Math.floor((j++)/5)%45}.png`
+    let  newImageSrc2=`Blood/5/1_${Math.floor((k++)/5)%30}.png`
+    if(i>200){i=0}
+    if(j>225){j=0}
+    if(k>145){k=0}
+    //changing images
+    plant.changeImgSrc(newImageSrc);
+    plant2.changeImgSrc(newImageSrc)
+    plant3.changeImgSrc(newImageSrc1)
+    plant4.changeImgSrc(newImageSrc1)
+    blood.changeImgSrc(newImageSrc2)
+    blood1.changeImgSrc(newImageSrc2)
+    //updating
+    plant.update()
+    plant2.update()
+
+    blood.update()
+    blood1.update()
+    tree.update()
+    house.update()
+    floor.update()
+    plant3.update()
+    plant4.update()
+}

@@ -1,0 +1,11 @@
+
+body{
+  /* background-image: url("bimage.jpg");   */
+  background-color: beige;
+}
+
+.maindiv{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);               
+}
