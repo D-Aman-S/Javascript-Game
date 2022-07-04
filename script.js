@@ -9,7 +9,6 @@ const gravity = 0.75
 
 let lastKey
 
-
 decreaseTimer();
 
 
