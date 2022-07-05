@@ -154,9 +154,9 @@ window.addEventListener('keyup', e=>{
 })
 
 function animatePlant(){
-    let  newImageSrc=`Plant/${Math.floor((i++)/5)%41}.png`
-    let  newImageSrc1=`Plant2/${Math.floor((j++)/5)%45}.png`
-    let  newImageSrc2=`Blood/5/1_${Math.floor((k++)/5)%30}.png`
+    let  newImageSrc=`Plant/${Math.floor((i++)/5)%5}.png`
+    let  newImageSrc1=`Plant2/${Math.floor((j++)/5)%5}.png`
+    let  newImageSrc2=`Blood/5/1_${Math.floor((k++)/5)%5}.png`
     if(i>200){i=0}
     if(j>225){j=0}
     if(k>145){k=0}
