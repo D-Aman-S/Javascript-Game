@@ -15,7 +15,7 @@ const background = new Sprite({
       } ,
       imageSrc:'Plant/?.png' ,
       scale:0.08,
-      numofimg:10
+      numofimg:9
     })
     const plant2 = new Sprite({
       position:{
@@ -24,7 +24,7 @@ const background = new Sprite({
       } ,
       imageSrc:'Plant/?.png' ,
       scale:0.08,
-      numofimg:10
+      numofimg:9
     })
     const plant3 = new Sprite({
       position:{
@@ -51,7 +51,7 @@ const background = new Sprite({
       } ,
       imageSrc:'Blood/5/1_?.png' ,
       scale:2,
-      numofimg:10
+      numofimg:16
     })
     const blood1 = new Sprite({
         position:{
