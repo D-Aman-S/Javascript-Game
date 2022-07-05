@@ -9,6 +9,8 @@ class Sprite{
         this.scale=scale
         this.numofimg=numofimg
         this.imageCounter=0;
+        this.holdFrame=15
+        this.framerCounter=0
         console.log(this.image.src);
 
     }
@@ -20,10 +22,10 @@ class Sprite{
         if(this.numofimg===1){
             this.draw()
         }else{
-            if(this.imageCounter<=this.numofimg){
+            if(this.imageCounter<=this.numofimg*this.holdFrame){
                 let str= this.imageSrc
                 console.log(this.imageSrc);
-                this.image.src =str.replace("?", this.imageCounter)
+                this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
                 console.log(this.image.src)
                 this.draw()
                 this.imageCounter++
