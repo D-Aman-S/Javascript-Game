@@ -11,10 +11,6 @@ let lastKey
 
 decreaseTimer();
 
-
-let i=0;
-let j=0;
-let k=0;
 //infinite animation loop
 function animate(){
     window.requestAnimationFrame(animate)
@@ -22,6 +18,7 @@ function animate(){
     context.fillStyle='black';
     context.fillRect(0, 0, canvas.width, canvas.height);
     background.update()
+    shop.update()
     //animating shop-not in the video
     animatePlant()
     /////
@@ -154,11 +151,12 @@ window.addEventListener('keyup', e=>{
 })
 
 function animatePlant(){
+    tree.update()
     plant.update()
     plant2.update()
     blood.update()
     blood1.update()
-    tree.update()
+   
     house.update()
     floor.update()
     plant3.update()
