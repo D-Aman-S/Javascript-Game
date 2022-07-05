@@ -1,25 +1,38 @@
 class Sprite{
-    constructor({position, imageSrc, scale = 1}){
+    constructor({position, imageSrc, scale = 1, numofimg=1}){
         this.position = position;
         this.height = 150;
         this.width = 50;
+        this.imageSrc=imageSrc
         this.image = new Image()
-        this.image.src=imageSrc
+        this.image.src=this.imageSrc
         this.scale=scale
+        this.numofimg=numofimg
+        this.imageCounter=0;
         console.log(this.image.src);
+
     }
     //players look
     draw(){
             context.drawImage(this.image, this.position.x, this.position.y, this.image.width*this.scale, this.image.height*this.scale)
     }
     update(){
-        
-        this.draw()
+        if(this.numofimg===1){
+            this.draw()
+        }else{
+            if(this.imageCounter<=this.numofimg){
+                let str= this.imageSrc
+                console.log(this.imageSrc);
+                this.image.src =str.replace("?", this.imageCounter)
+                console.log(this.image.src)
+                this.draw()
+                this.imageCounter++
+            }
+            else{
+                this.imageCounter=0
+            }   
+        }   
     }
-    changeImgSrc(imgsrc){
-        this.image.src=imgsrc
-    }
-
 }
 
 //Fighter classs

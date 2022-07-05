@@ -13,48 +13,54 @@ const background = new Sprite({
         x:900,
         y:480
       } ,
-      imageSrc:'Plant/1.png' ,
-      scale:0.08
+      imageSrc:'Plant/?.png' ,
+      scale:0.08,
+      numofimg:10
     })
     const plant2 = new Sprite({
       position:{
         x:950,
         y:480
       } ,
-      imageSrc:'Plant/1.png' ,
-      scale:0.08
+      imageSrc:'Plant/?.png' ,
+      scale:0.08,
+      numofimg:10
     })
     const plant3 = new Sprite({
       position:{
         x:10,
         y:480
       } ,
-      imageSrc:'Plant2/0.png' ,
-      scale:0.36
+      imageSrc:'Plant2/?.png' ,
+      scale:0.36,
+      numofimg:10
     })
     const plant4 = new Sprite({
       position:{
         x:-40,
         y:480
       } ,
-      imageSrc:'Plant2/0.png' ,
-      scale:0.36
+      imageSrc:'Plant2/?.png' ,
+      scale:0.36,
+      numofimg:10
     })
     const blood = new Sprite({
       position:{
         x:-50,
         y:-50
       } ,
-      imageSrc:'Blood/5/1_0.png' ,
-      scale:2
+      imageSrc:'Blood/5/1_?.png' ,
+      scale:2,
+      numofimg:10
     })
     const blood1 = new Sprite({
         position:{
           x:880,
           y:-50
         } ,
-        imageSrc:'Blood/5/1_0.png' ,
-        scale:2
+        imageSrc:'Blood/5/1_?.png' ,
+        scale:2,
+        numofimg:10
       })
       const tree = new Sprite({
         position:{
@@ -78,7 +84,7 @@ const background = new Sprite({
           y:552
         } ,
         imageSrc:'Props/flloor.png' ,
-        scale:1.5
+        scale:1.5,
       })
   
   
