@@ -76,17 +76,20 @@ class AnimationObjects{
         if(this.numofimg===1){
             this.draw()
         }else{
-            if(this.imageCounter<=this.numofimg*this.holdFrame){
-                let str= this.imageSrc
-                console.log(this.imageSrc);
-                this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
-                console.log(this.image.src)
-                this.draw()
-                this.imageCounter++
-            }
-            else{
-                this.imageCounter=0
-            }   
+            // if(this.imageCounter<=this.numofimg*this.holdFrame){
+            //     let str= this.imageSrc
+            //     console.log(this.imageSrc);
+            //     this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
+            //     console.log(this.image.src)
+            //     this.draw()
+            //     this.imageCounter++
+            // }
+            // else{
+            //     this.imageCounter=0
+            // } 
+            let str= this.imageSrc  
+            this.image.src = str.replace("?", 0)
+            this.draw()
         }   
     }
 }
