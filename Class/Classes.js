@@ -176,4 +176,40 @@ class Fighter extends Sprite {
             this.isAttacking = false
         }, 100)
     }
+
+
+    switchSprite(){
+      switch(Sprite){
+          case'idle':
+          if(this.image !== this.Sprites.idle.image){
+            this.image=this.Sprites.idle.image
+            this.framesMax =this.Sprites.idle.framesMax
+            this.framesCurrent = 0
+          }
+          break;
+          case'run':
+          if(this.image !== this.Sprites.run.image){
+          this.image=this.Sprites.run.image
+          this.framesMax =this.Sprites.run.framesMax
+          this.framesCurrent = 0     
+          }
+          break;
+          case'up':{
+          if(this.image !== this.Sprites.up.image)
+          this.image = this.Sprites.up.image
+          this.framesMax =this.Sprites.up.framesMax
+          this.framesCurrent = 0            
+          }
+          break;
+
+          case'down':{
+            if(this.image !== this.Sprites.down.image)
+            this.image = this.Sprites.down.image
+            this.framesMax =this.Sprites.down.framesMax
+            this.framesCurrent = 0    
+          }
+      }
+      
+
+    }
 }

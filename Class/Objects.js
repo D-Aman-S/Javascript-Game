@@ -123,7 +123,7 @@ const background = new AnimationObjects({
         x: 5,
         y:57
       },
-      Sprites:{                                             //Player Movement(Martial Art Hero)
+      Sprites:{                                          //Player Movement(Martial Art Hero)
         idle:{
           imageSrc: 'Props/Martial Hero 3/Sprite/Idle.png',
           framesMax: 10
@@ -131,6 +131,14 @@ const background = new AnimationObjects({
         run:{
           imageSrc: 'Props/Martial Hero 3/Sprite/Run.png',
           framesMax: 8
+        },
+        up: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Going Up.png',
+          framesMax: 3
+        },
+        down: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Going Down.png',
+          framesMax: 3
         }
       }
   })
