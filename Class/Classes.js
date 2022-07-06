@@ -16,7 +16,7 @@ class Sprite {
       this.framesMax = framesMax
       this.framesCurrent = 0
       this.framesElapsed = 0
-      this.framesHold = 5
+      this.framesHold = 11
       this.offset = offset
     }
   
@@ -76,29 +76,45 @@ class AnimationObjects{
         if(this.numofimg===1){
             this.draw()
         }else{
-            // if(this.imageCounter<=this.numofimg*this.holdFrame){
-            //     let str= this.imageSrc
-            //     console.log(this.imageSrc);
-            //     this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
-            //     console.log(this.image.src)
-            //     this.draw()
-            //     this.imageCounter++
-            // }
-            // else{
-            //     this.imageCounter=0
-            // } 
-            let str= this.imageSrc  
-            this.image.src = str.replace("?", 0)
-            this.draw()
+            if(this.imageCounter<=this.numofimg*this.holdFrame){
+                let str= this.imageSrc
+                console.log(this.imageSrc);
+                this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
+                console.log(this.image.src)
+                this.draw()
+                this.imageCounter++
+            }
+            else{
+                this.imageCounter=0
+            }   
         }   
     }
 }
 
 //Fighter classs
 
-class Fighter{
-    constructor({position, velocity, color = '#A10035', offset}){
-        this.position = position;
+class Fighter extends Sprite {
+    constructor({position,
+                velocity,
+                color = '#A10035', 
+                imageSrc, 
+                scale = 1, 
+                framesMax = 1, 
+                offset = { x: 0, y: 0 },
+                Sprites
+            })
+
+    {
+        super({
+            imageSrc,
+            scale,
+            position,
+            framesMax,
+            offset,
+
+        })
+
+        
         this.velocity = velocity;
         this.height = 150;
         this.width = 50;
@@ -115,25 +131,18 @@ class Fighter{
         this.color = color
         this.isAttacking
         this.health=100
-    }
-    //players look
-    draw(){
-        context.fillStyle=this.color;
-        context.fillRect(this.position.x,this.position.y,this.width,this.height)
+        this.framesCurrent = 0
+        this.framesElapsed = 0
+        this.framesHold = 11
+        this.Sprites = Sprites
 
-        //attack box
-        if(this.isAttacking)
-        {
-        context.fillStyle='#FF869E';
-        context.fillRect
-            (
-                this.attackbox.position.x,
-                this.attackbox.position.y,
-                this.attackbox.width,
-                this.attackbox.height
-            )
+        for(const Sprite in this.Sprites){
+            Sprites[Sprite].image = new Image()
+            Sprites[Sprite].image.src = Sprites[Sprite].imageSrc
         }
     }
+    //players look
+    
     update(){
         
         this.draw()
