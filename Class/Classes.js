@@ -110,7 +110,7 @@ class Fighter extends Sprite {
             scale,
             position,
             framesMax,
-            offset,
+            offset
 
         })
 
@@ -146,6 +146,8 @@ class Fighter extends Sprite {
     update(){
         
         this.draw()
+        this.animateFrames()
+
         this.attackbox.position.x = this.position.x + this.attackbox.offset.x
         this.attackbox.position.y = this.position.y
 
