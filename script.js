@@ -23,17 +23,20 @@ function animate(){
     animatePlant()
     /////
     player.update()
-    enemy.update()
+    //enemy.update
 
     player.velocity.x=0;
     enemy.velocity.x=0;
 
     //Player Movement
+    player.image=player.Sprites.idle.image
     if(keys.a.pressed && player.lastKey==='a'){
         player.velocity.x=-5
+        player.image=player.Sprites.run.image
     }
     else if(keys.d.pressed && player.lastKey==='d'){
         player.velocity.x=5
+        player.image=player.Sprites.run.image
     }
 
     //Enemy Movement

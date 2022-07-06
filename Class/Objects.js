@@ -115,9 +115,26 @@ const background = new AnimationObjects({
       {
           x: 0,
           y: 0
+      },
+      imageSrc:'Props/Martial Hero 3/Sprite/Idle.png',
+      framesMax: 10,
+      scale: 2.5,
+      offset: {
+        x: 5,
+        y:57
+      },
+      Sprites:{                                             //Player Movement(Martial Art Hero)
+        idle:{
+          imageSrc: 'Props/Martial Hero 3/Sprite/Idle.png',
+          framesMax: 10
+        },
+        run:{
+          imageSrc: 'Props/Martial Hero 3/Sprite/Run.png',
+          framesMax: 8
+        }
       }
   })
-  console.log(player);
+
   //to keep track of key presses
   
   
