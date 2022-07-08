@@ -8,7 +8,7 @@ class Sprite {
       offset = { x: 0, y: 0 }
     }) {
       this.position = position
-      this.width = 50
+      this.width = 1260
       this.height = 150
       this.image = new Image()
       this.image.src = imageSrc
@@ -51,45 +51,7 @@ class Sprite {
       this.animateFrames()
     }
   }
-//my change for animation
-class AnimationObjects{
-    constructor({position, imageSrc, scale = 1, numofimg=1}){
-        this.position = position;
-        this.height = 150;
-        this.width = 50;
-        this.imageSrc=imageSrc
-        this.image = new Image()
-        this.image.src=this.imageSrc
-        this.scale=scale
-        this.numofimg=numofimg
-        this.imageCounter=0;
-        this.holdFrame=50
-        this.framerCounter=0
-        console.log(this.image.src);
 
-    }
-    //players look
-    draw(){
-            context.drawImage(this.image, this.position.x, this.position.y, this.image.width*this.scale, this.image.height*this.scale)
-    }
-    update(){
-        if(this.numofimg===1){
-            this.draw()
-        }else{
-            if(this.imageCounter<=this.numofimg*this.holdFrame){
-                let str= this.imageSrc
-                console.log(this.imageSrc);
-                this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
-                console.log(this.image.src)
-                this.draw()
-                this.imageCounter++
-            }
-            else{
-                this.imageCounter=0
-            }   
-        }   
-    }
-}
 
 //Fighter classs
 
@@ -106,18 +68,19 @@ class Fighter extends Sprite {
 
     {
         super({
+            position,
             imageSrc,
             scale,
-            position,
             framesMax,
             offset
+            
 
         })
 
         
         this.velocity = velocity;
         this.height = 150;
-        this.width = 50;
+        this.width = 1260;
         this.lastKey 
         this.attackbox = {
             position: {
@@ -140,6 +103,7 @@ class Fighter extends Sprite {
             Sprites[Sprite].image = new Image()
             Sprites[Sprite].image.src = Sprites[Sprite].imageSrc
         }
+        //console.log(this.Sprites);
     }
     //players look
     
@@ -178,38 +142,87 @@ class Fighter extends Sprite {
     }
 
 
-    switchSprite(){
+    switchSprite(Sprite){
       switch(Sprite){
-          case'idle':
+          case 'idle':
           if(this.image !== this.Sprites.idle.image){
+          //  debugger
+
             this.image=this.Sprites.idle.image
             this.framesMax =this.Sprites.idle.framesMax
-            this.framesCurrent = 0
+            
+           // this.framesCurrent = 0
           }
-          break;
-          case'run':
+          break
+          case 'run':
           if(this.image !== this.Sprites.run.image){
           this.image=this.Sprites.run.image
           this.framesMax =this.Sprites.run.framesMax
-          this.framesCurrent = 0     
+         // this.framesCurrent = 0 
+         
+         // player.image=player.Sprites.run.image    
           }
-          break;
-          case'up':{
+          break
+          case 'up':
           if(this.image !== this.Sprites.up.image)
+          {
           this.image = this.Sprites.up.image
           this.framesMax =this.Sprites.up.framesMax
-          this.framesCurrent = 0            
-          }
-          break;
+          this.framesCurrent = 0         
+          }   
+          
+          break
 
-          case'down':{
+          case 'down':
             if(this.image !== this.Sprites.down.image)
+            {
             this.image = this.Sprites.down.image
             this.framesMax =this.Sprites.down.framesMax
             this.framesCurrent = 0    
-          }
+            }
+            break
+          
       }
       
 
+    }
+}
+//my change for animation
+class AnimationObjects{
+    constructor({position, imageSrc, scale = 1, numofimg=1}){
+        this.position = position;
+        this.height = 150;
+        this.width = 50;
+        this.imageSrc=imageSrc
+        this.image = new Image()
+        this.image.src=this.imageSrc
+        this.scale=scale
+        this.numofimg=numofimg
+        this.imageCounter=0;
+        this.holdFrame=50
+        this.framerCounter=0
+        console.log(this.image.src);
+
+    }
+    //players look
+    draw(){
+            context.drawImage(this.image, this.position.x, this.position.y, this.image.width*this.scale, this.image.height*this.scale)
+    }
+    update(){
+        if(this.numofimg===1){
+            this.draw()
+        }else{
+            if(this.imageCounter<=this.numofimg*this.holdFrame){
+                let str= this.imageSrc
+                //console.log(this.imageSrc);
+                this.image.src =str.replace("?", Math.floor(this.imageCounter/this.holdFrame))
+                //console.log(this.image.src)
+                this.draw()
+                this.imageCounter++
+            }
+            else{
+                this.imageCounter=0
+            }   
+        }   
     }
 }

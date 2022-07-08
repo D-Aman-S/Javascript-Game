@@ -29,18 +29,29 @@ function animate(){
     enemy.velocity.x=0;
 
     //Player Movement
-    player.switchSprite('idle')
+  player.switchSprite('idle')
+    //player.image=player.Sprites.idle.image
+    //player.image=player.Sprites.idle.image
+          // player.framesMax =player.Sprites.idle.framesMax
     if(keys.a.pressed && player.lastKey==='a'){
-        player.velocity.x=-5
+       player.velocity.x=-5
         player.switchSprite('run')
+       //player.image=player.Sprites.run.image
+       //player.image=player.Sprites.run.image
+        //  player.framesMax =player.Sprites.run.framesMax
     }
     else if(keys.d.pressed && player.lastKey==='d'){
         player.velocity.x=5
-        player.switchSprite('run')
+       player.switchSprite('run')
+        //player.image=player.Sprites.run.image
+        //  player.image=player.Sprites.run.image
+         // player.framesMax =player.Sprites.run.framesMax
     }
     // Jumping
     if(player.velocity.y < 0){
-        player.switchSprite('up')
+       player.switchSprite('up')
+       // player.image=player.Sprites.up.image
+        //player.framesMax=player.Sprites.up.framesMax
     }
     if(player.velocity.y > 0){
         player.switchSprite('down')
