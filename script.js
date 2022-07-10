@@ -76,10 +76,10 @@ function animate(){
         rectangle1: player,
         rectangle2: enemy
     }) &&
-    player.isAttacking && player.framesCurrent===3)
+    player.isAttacking && player.framesCurrent===4)
         {
             console.log("attack is happeneing");
-            player.isAttacking = falseS
+            player.isAttacking = false
             console.log('Player Attacked')
             enemy.health-=20
             document.querySelector('#enemyHealth').style.width=enemy.health+'%'
@@ -90,7 +90,7 @@ function animate(){
         rectangle1: enemy,
         rectangle2: player
     }) &&
-    enemy.isAttacking)
+    enemy.isAttacking &&  enemy.framesCurrent===4)
         {
             enemy.isAttacking = false
             console.log('Enemy Attacked')
