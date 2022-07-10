@@ -1,3 +1,6 @@
+
+
+
 //sprite shop
 const shop = new Sprite({
     position: {
@@ -139,7 +142,27 @@ const background = new AnimationObjects({
         down: {
           imageSrc: 'Props/Martial Hero 3/Sprite/Going Down.png',
           framesMax: 3
+        },
+        attack1: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Attack1.png',
+          framesMax: 7
+        },
+        takeHit: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Take Hit.png',
+          framesMax: 3
+        },
+        death: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Death.png',
+          framesMax: 11
         }
+      },
+      attackBox: {
+        offset: {
+          x: 100,
+          y: 50
+        },
+        width: 160,
+        height: 50
       }
   })
 
@@ -161,6 +184,52 @@ const background = new AnimationObjects({
       {
           x: -100,
           y: 0
+      }
+      ,
+      imageSrc:'Props/EVil Wizard 2/Sprites/Idle.png',
+      framesMax: 8,
+      scale: 2.5,
+      offset: {
+        x: 50,
+        y: 268
+      },
+      Sprites:{                                          //Player Movement(Martial Art Hero)
+        idle:{
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Idle.png',
+          framesMax:8 
+        },
+        run:{
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Run.png',
+          framesMax: 8
+        },
+        up: {
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Jump.png',
+          framesMax: 2
+        },
+        down: {
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Fall.png',
+          framesMax: 2
+        },
+        attack1: {
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Attack2.png',
+          framesMax: 8
+        },
+        takeHit: {
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Take hit.png',
+          framesMax: 3
+        },
+        death: {
+          imageSrc: 'Props/EVil Wizard 2/Sprites/Death.png',
+          framesMax: 11
+        }
+      },
+      attackBox: {
+        offset: {
+          x: -170,
+          y: 50
+        },
+        width: 170,
+        height: 50
       }
   })
   const keys = {

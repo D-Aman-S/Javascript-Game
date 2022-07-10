@@ -8,7 +8,7 @@ class Sprite {
       offset = { x: 0, y: 0 }
     }) {
       this.position = position
-      this.width = 1260
+      this.width = 50
       this.height = 150
       this.image = new Image()
       this.image.src = imageSrc
@@ -63,7 +63,8 @@ class Fighter extends Sprite {
                 scale = 1, 
                 framesMax = 1, 
                 offset = { x: 0, y: 0 },
-                Sprites
+                Sprites,
+                attackbox = { offset: {}, width: undefined, height: undefined }
             })
 
     {
@@ -79,17 +80,18 @@ class Fighter extends Sprite {
 
         
         this.velocity = velocity;
+
+        this.width = 50;
         this.height = 150;
-        this.width = 1260;
         this.lastKey 
         this.attackbox = {
-            position: {
-                x: this.position.x,
-                y: this.position.y
-            },
-            offset,
-            width: 150, //changed the width from 100 to 150
-            height: 50
+          position: {
+            x: this.position.x,
+            y: this.position.y
+          },
+          offset: attackbox.offset,
+          width: attackbox.width,
+          height: attackbox.height
         }
         this.color = color
         this.isAttacking
@@ -103,17 +105,20 @@ class Fighter extends Sprite {
             Sprites[Sprite].image = new Image()
             Sprites[Sprite].image.src = Sprites[Sprite].imageSrc
         }
-        //console.log(this.Sprites);
+        // console.log(this.Sprites);
     }
     //players look
     
     update(){
-        
         this.draw()
         this.animateFrames()
 
         this.attackbox.position.x = this.position.x + this.attackbox.offset.x
-        this.attackbox.position.y = this.position.y
+        this.attackbox.position.y = this.position.y + this.attackbox.offset.y
+        //only writing this to check the positions of attack
+        console.log(this.attackbox)
+        context.fillStyle="Black"
+        context.fillRect(this.attackbox.position.x, this.attackbox.position.y, this.attackbox.width, this.attackbox.height); 
 
         this.position.x+=this.velocity.x;
         this.position.y += this.velocity.y; // adding y velocity
@@ -121,7 +126,8 @@ class Fighter extends Sprite {
         //stopping player when touchinng ground
 
         if(this.position.y+this.height>canvas.height-18){
-            this.velocity.y = -0.25;
+            this.velocity.y = 0;
+            this.position.y=408;
         }
         //stopping when too high up
         else if(this.position.y < 0){
@@ -130,36 +136,41 @@ class Fighter extends Sprite {
         else{
             this.velocity.y+=gravity  
         }
-        // console.log(this.position.y)
+        //  console.log(this.position.y)
     }
     //attackbox
 
     attack(){
+        this.switchSprite('attack1')
         this.isAttacking = true
-        setTimeout(() => {
-            this.isAttacking = false
-        }, 100)
+
     }
 
 
     switchSprite(Sprite){
+      
+      //only running the attack animation
+      if (
+        this.image === this.Sprites.attack1.image &&
+        this.framesCurrent < this.Sprites.attack1.framesMax - 1
+      )
+       { return}
       switch(Sprite){
+
+       
           case 'idle':
           if(this.image !== this.Sprites.idle.image){
-          //  debugger
-
             this.image=this.Sprites.idle.image
             this.framesMax =this.Sprites.idle.framesMax
             
-           // this.framesCurrent = 0
+           this.framesCurrent = 0
           }
           break
           case 'run':
           if(this.image !== this.Sprites.run.image){
           this.image=this.Sprites.run.image
           this.framesMax =this.Sprites.run.framesMax
-         // this.framesCurrent = 0 
-         
+          this.framesCurrent = 0 
          // player.image=player.Sprites.run.image    
           }
           break
@@ -181,10 +192,16 @@ class Fighter extends Sprite {
             this.framesCurrent = 0    
             }
             break
+
+            case 'attack1':
+              if (this.image !== this.Sprites.attack1.image) {
+                this.image = this.Sprites.attack1.image
+                this.framesMax = this.Sprites.attack1.framesMax
+                this.framesCurrent = 0
+              }
+              break
           
       }
-      
-
     }
 }
 //my change for animation
