@@ -1,3 +1,5 @@
+
+
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d'); // it was called c in the main file
 //filling canvas
@@ -23,58 +25,63 @@ function animate(){
     animatePlant()
     /////
     player.update()
-    //enemy.update
+    enemy.update()
 
     player.velocity.x=0;
     enemy.velocity.x=0;
 
     //Player Movement
-  player.switchSprite('idle')
-    //player.image=player.Sprites.idle.image
-    //player.image=player.Sprites.idle.image
-          // player.framesMax =player.Sprites.idle.framesMax
+
     if(keys.a.pressed && player.lastKey==='a'){
        player.velocity.x=-5
         player.switchSprite('run')
-       //player.image=player.Sprites.run.image
-       //player.image=player.Sprites.run.image
-        //  player.framesMax =player.Sprites.run.framesMax
     }
     else if(keys.d.pressed && player.lastKey==='d'){
         player.velocity.x=5
        player.switchSprite('run')
-        //player.image=player.Sprites.run.image
-        //  player.image=player.Sprites.run.image
-         // player.framesMax =player.Sprites.run.framesMax
     }
-    // Jumping
+    else{
+        player.switchSprite('idle')
+    }
+    // Jumping player
     if(player.velocity.y < 0){
-       player.switchSprite('up')
-       // player.image=player.Sprites.up.image
-        //player.framesMax=player.Sprites.up.framesMax
+      player.switchSprite('up')
     }
-    if(player.velocity.y > 0){
+    else if(player.velocity.y > 1){
         player.switchSprite('down')
     }
 
     //Enemy Movement
     if(keys.ArrowLeft.pressed && enemy.lastKey==='ArrowLeft'){
         enemy.velocity.x=-5
+        enemy.switchSprite('run')
     }
     else if(keys.ArrowRight.pressed && enemy.lastKey==='ArrowRight'){
         enemy.velocity.x=5
+        enemy.switchSprite('run')
+    }else{
+        enemy.switchSprite('idle')
     }
+    //jumping  enemy
+     // Jumping
+     if(enemy.velocity.y < 0){
+        enemy.switchSprite('up')
+      }
+      else if(enemy.velocity.y > 1){
+          enemy.switchSprite('down')
+      }
 
     //Detect for Collision
     if(rectangularCollision({
         rectangle1: player,
         rectangle2: enemy
     }) &&
-    player.isAttacking)
+    player.isAttacking && player.framesCurrent===3)
         {
-            player.isAttacking = false
+            console.log("attack is happeneing");
+            player.isAttacking = falseS
             console.log('Player Attacked')
-           enemy.health-=20
+            enemy.health-=20
             document.querySelector('#enemyHealth').style.width=enemy.health+'%'
         }
 
