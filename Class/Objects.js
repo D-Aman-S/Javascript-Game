@@ -156,7 +156,7 @@ const background = new AnimationObjects({
           framesMax: 11
         }
       },
-      attackBox: {
+      attackbox: {
         offset: {
           x: 100,
           y: 50
@@ -223,9 +223,9 @@ const background = new AnimationObjects({
           framesMax: 11
         }
       },
-      attackBox: {
+      attackbox: {
         offset: {
-          x: -170,
+          x: 40,
           y: 50
         },
         width: 170,
