@@ -119,73 +119,7 @@ const background = new AnimationObjects({
           x: 0,
           y: 0
       },
-      imageSrc:'Props/Martial Hero 3/Sprite/Idle.png',
-      framesMax: 10,
-      scale: 2.5,
-      offset: {
-        x: 5,
-        y:57
-      },
-      Sprites:{                                          //Player Movement(Martial Art Hero)
-        idle:{
-          imageSrc: 'Props/Martial Hero 3/Sprite/Idle.png',
-          framesMax: 10
-        },
-        run:{
-          imageSrc: 'Props/Martial Hero 3/Sprite/Run.png',
-          framesMax: 8
-        },
-        up: {
-          imageSrc: 'Props/Martial Hero 3/Sprite/Going Up.png',
-          framesMax: 3
-        },
-        down: {
-          imageSrc: 'Props/Martial Hero 3/Sprite/Going Down.png',
-          framesMax: 3
-        },
-        attack1: {
-          imageSrc: 'Props/Martial Hero 3/Sprite/Attack1.png',
-          framesMax: 7
-        },
-        takeHit: {
-          imageSrc: 'Props/Martial Hero 3/Sprite/Take Hit.png',
-          framesMax: 3
-        },
-        death: {
-          imageSrc: 'Props/Martial Hero 3/Sprite/Death.png',
-          framesMax: 11
-        }
-      },
-      attackbox: {
-        offset: {
-          x: 100,
-          y: 50
-        },
-        width: 160,
-        height: 50
-      }
-  })
-
-  //to keep track of key presses
-  
-  
-  //enemy object
-  const enemy = new Fighter({
-      position:{
-          x:400,
-          y:50
-      },
-  velocity:{
-          x:0,
-          y:0
-      },
-      color: '#FFE7BF',
-      offset:
-      {
-          x: -100,
-          y: 0
-      }
-      ,
+      
       imageSrc:'Props/EVil Wizard 2/Sprites/Idle.png',
       framesMax: 8,
       scale: 2.5,
@@ -220,6 +154,73 @@ const background = new AnimationObjects({
         },
         death: {
           imageSrc: 'Props/EVil Wizard 2/Sprites/Death.png',
+          framesMax: 11
+        }
+      },
+      attackbox: {
+        offset: {
+          x: 100,
+          y: 50
+        },
+        width: 160,
+        height: 50
+      }
+  })
+
+  //to keep track of key presses
+  
+  
+  //enemy object
+  const enemy = new Fighter({
+      position:{
+          x:400,
+          y:50
+      },
+  velocity:{
+          x:0,
+          y:0
+      },
+      color: '#FFE7BF',
+      offset:
+      {
+          x: -100,
+          y: 0
+      },
+
+      imageSrc:'Props/Martial Hero 3/Sprite/Idle.png',
+      framesMax: 10,
+      scale: 2.5,
+      offset: {
+        x: 5,
+        y:57
+      },
+      Sprites:{                                          //Player Movement(Martial Art Hero)
+        idle:{
+          imageSrc: 'Props/Martial Hero 3/Sprite/Idle.png',
+          framesMax: 10
+        },
+        run:{
+          imageSrc: 'Props/Martial Hero 3/Sprite/Run.png',
+          framesMax: 8
+        },
+        up: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Going Up.png',
+          framesMax: 3
+        },
+        down: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Going Down.png',
+          framesMax: 3
+        },
+        attack1: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Attack1.png',
+          framesMax: 7
+        },
+        takeHit: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Take Hit.png',
+          framesMax: 3
+        },
+        death: {
+          imageSrc: 'Props/Martial Hero 3/Sprite/Death.png',
           framesMax: 11
         }
       },
