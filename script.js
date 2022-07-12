@@ -21,12 +21,12 @@ function animate(){
     context.fillRect(0, 0, canvas.width, canvas.height);
     background.update()
     shop.update()
+    context.fillStyle = 'rgba(255, 255, 255, 0.22)'  
+    context.fillRect(0, 0, canvas.width, canvas.height)
     //animating shop-not in the video
     animatePlant()
-    
     player.update()
     enemy.update()
-
     player.velocity.x=0;
     enemy.velocity.x=0;
 
@@ -71,18 +71,21 @@ function animate(){
           enemy.switchSprite('down')
       }
 
-    //Detect for Collision
+    //Detect for Collision & enemy gets hit
+
     if(rectangularCollision({
         rectangle1: player,
         rectangle2: enemy
     }) &&
     player.isAttacking && player.framesCurrent === 5)
         {
-            console.log("attack is happeneing");
+            // console.log("attack is happeneing");
+            enemy.takeHit();
             player.isAttacking = false
-            console.log('Player Attacked')
-            enemy.health-=20
-            document.querySelector('#enemyHealth').style.width=enemy.health+'%'
+            // console.log('Player Attacked')
+            gsap.to('#enemyHealth',{
+                width: enemy.health+'%'
+            })
         }
 
         //if player misses
@@ -94,16 +97,19 @@ function animate(){
         rectangle1: enemy,
         rectangle2: player
     }) &&
-    enemy.isAttacking &&  enemy.framesCurrent === 2)
+    enemy.isAttacking &&  enemy.framesCurrent === 3)
         {
+            player.takeHit();
             enemy.isAttacking = false
-            console.log('Enemy Attacked')
-             player.health-=20
-             document.querySelector('#playerHealth').style.width=player.health+'%'
+            // console.log('Enemy Attacked')
+             
+            gsap.to('#playerHealth',{
+                width: player.health+'%'
+            })
         }
         
         //if enemy misses
-        if(enemy.isAttacking && enemy.framesCurrent === 2){
+        if(enemy.isAttacking && enemy.framesCurrent === 3){
             enemy.isAttacking = false
         }
         
@@ -120,6 +126,9 @@ animate();
 //capturing key press events
 
 window.addEventListener('keydown', e=>{ 
+    if(!player.dead){
+
+    
    // console.log(e.key)
     switch(e.key){
         
@@ -142,27 +151,32 @@ window.addEventListener('keydown', e=>{
         case ' ':
             player.attack()
             break
-
-    //Enemy Movement
-
-        case 'ArrowRight':
-            keys.ArrowRight.pressed=true;
-            enemy.lastKey = 'ArrowRight'
-            break
-        case 'ArrowLeft':
-            keys.ArrowLeft.pressed=true;
-            enemy.lastKey = 'ArrowLeft'
-            break
-        case 'ArrowUp':
-            enemy.velocity.y=-22
-            break
-        case 'ArrowDown':
-            enemy.velocity.y=22
-            break
-        case '/':  //Nearest to the arrow keys
-            enemy.attack()
-            break 
+        }
     }
+
+    if(!enemy.dead){
+    switch(e.key){
+            //Enemy Movement
+
+            case 'ArrowRight':
+                keys.ArrowRight.pressed=true;
+                enemy.lastKey = 'ArrowRight'
+                break
+            case 'ArrowLeft':
+                keys.ArrowLeft.pressed=true;
+                enemy.lastKey = 'ArrowLeft'
+                break
+            case 'ArrowUp':
+                enemy.velocity.y=-22
+                break
+            case 'ArrowDown':
+                enemy.velocity.y=22
+                break
+            case '/':  //Nearest to the arrow keys
+                enemy.attack()
+                break 
+    }
+} 
     
 })
 

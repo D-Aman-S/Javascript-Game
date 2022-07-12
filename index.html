@@ -1,8 +1,12 @@
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <style>
     * {
       box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
     }
   </style>
 </head>
@@ -23,22 +27,23 @@
       <div
         style="
           position: relative;
-          height: 30px;
+          
           width: 100%;
           display: flex;
           justify-content: flex-end;
+          
         "
       >
-        <div style="background-color: #ff9f29; height: 30px; width: 100%"></div>
+        <div style="background-color: #FFC18E; height: 30px; width: 100%"></div>
         <div
           id="playerHealth"
           style="
             position: absolute;
-            background: #1a4d2e;
+            background: #513252;
             top: 0;
             right: 0;
             bottom: 0;
-
+            
             width: 100%;
           "
         ></div>
@@ -47,9 +52,9 @@
       <div
         id="timer"
         style="
-          background-color: #faf3e3;
+          background-color: #610C63;
           width: 100px;
-          height: 100px;
+          height: 75px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
@@ -61,12 +66,12 @@
 
       <!-- enemy health -->
       <div style="position: relative; height: 30px; width: 100%">
-        <div style="background-color: #ff9f29; height: 30px"></div>
+        <div style="background-color: #FFC18E; height: 30px"></div>
         <div
           id="enemyHealth"
           style="
             position: absolute;
-            background: #1a4d2e;
+            background: #513252;
             top: 0;
             bottom: 0;
             left: 0;
@@ -94,7 +99,7 @@
     </div>
     <canvas></canvas>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="Class/Classes.js"></script>
   <script src="Class/Objects.js"></script>
   <script src="Class/Utilities.js"></script>

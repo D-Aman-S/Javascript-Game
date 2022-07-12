@@ -154,7 +154,7 @@ const background = new AnimationObjects({
         },
         death: {
           imageSrc: 'Props/EVil Wizard 2/Sprites/Death.png',
-          framesMax: 11
+          framesMax: 7
         }
       },
       attackbox: {
