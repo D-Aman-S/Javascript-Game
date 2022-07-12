@@ -1,6 +1,7 @@
 
 
 function rectangularCollision({rectangle1, rectangle2 }) {
+    //console.log({rectangle1, rectangle2 })
     return(
         rectangle1.attackbox.position.x + rectangle1.attackbox.width >= rectangle2.position.x &&
         rectangle1.attackbox.position.x <= rectangle2.position.x + rectangle2.width &&
@@ -8,6 +9,7 @@ function rectangularCollision({rectangle1, rectangle2 }) {
         rectangle1.attackbox.position.y <= rectangle2.position.y + rectangle2.height &&
         rectangle1.isAttacking
     )
+    
 }
 
 function determineWinner({player, enemy,  timerId}){
