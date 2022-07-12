@@ -23,7 +23,7 @@ function animate(){
     shop.update()
     //animating shop-not in the video
     animatePlant()
-    /////
+    
     player.update()
     enemy.update()
 
@@ -76,7 +76,7 @@ function animate(){
         rectangle1: player,
         rectangle2: enemy
     }) &&
-    player.isAttacking && player.framesCurrent===4)
+    player.isAttacking && player.framesCurrent === 5)
         {
             console.log("attack is happeneing");
             player.isAttacking = false
@@ -85,12 +85,16 @@ function animate(){
             document.querySelector('#enemyHealth').style.width=enemy.health+'%'
         }
 
+        //if player misses
+        if(player.isAttacking && player.framesCurrent === 5){
+            player.isAttacking = false
+        }
 
     if(rectangularCollision({
         rectangle1: enemy,
         rectangle2: player
     }) &&
-    enemy.isAttacking &&  enemy.framesCurrent===4)
+    enemy.isAttacking &&  enemy.framesCurrent === 2)
         {
             enemy.isAttacking = false
             console.log('Enemy Attacked')
@@ -98,6 +102,12 @@ function animate(){
              document.querySelector('#playerHealth').style.width=player.health+'%'
         }
         
+        //if enemy misses
+        if(enemy.isAttacking && enemy.framesCurrent === 2){
+            enemy.isAttacking = false
+        }
+        
+
         //ending the game based on the heALTH   
         if(enemy.health <=0 || player.health <=0){
                 determineWinner({player, enemy, timerId})

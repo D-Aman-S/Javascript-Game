@@ -159,10 +159,10 @@ const background = new AnimationObjects({
       },
       attackbox: {
         offset: {
-          x: 100,
+          x: 300,
           y: 50
         },
-        width: 160,
+        width: 250,
         height: 50
       }
   })
@@ -173,7 +173,7 @@ const background = new AnimationObjects({
   //enemy object
   const enemy = new Fighter({
       position:{
-          x:400,
+          x:570,
           y:50
       },
   velocity:{
@@ -226,10 +226,10 @@ const background = new AnimationObjects({
       },
       attackbox: {
         offset: {
-          x: 40,
+          x: -10,
           y: 50
         },
-        width: 170,
+        width: 120,
         height: 50
       }
   })
